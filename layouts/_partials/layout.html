@@ -1,16 +1,18 @@
 {{- $page := . -}}
-{{- $class := "doc" -}}
+{{- if reflect.IsMap . -}}
+  {{- $page = default . .page -}}
+{{- end -}}
+{{- $docsContext := partialCached "docs-context" $page (or $page.Path $page.RelPermalink) -}}
+{{- $class := cond $docsContext.isDoc "doc" "page" -}}
 {{- $view := "article" -}}
 {{- $showTOC := true -}}
 {{- if reflect.IsMap . -}}
-  {{- $page = default . .page -}}
   {{- $class = default $class .class -}}
   {{- $view = default $view .view -}}
   {{- if isset . "toc" -}}
     {{- $showTOC = .toc -}}
   {{- end -}}
 {{- end -}}
-{{- $docsContext := partialCached "docs-context" $page (or $page.Path $page.RelPermalink) -}}
 <div class="{{ $class }} layout container">
   <aside class="aside" id="docs-sidebar" aria-label='{{ if $docsContext.isDoc }}{{ i18n "documentation" | default "Documentation" }}{{ else }}{{ i18n "main_menu" | default "Main menu" }}{{ end }}'>
     {{ partial "sidebar" $page }}
