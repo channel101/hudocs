@@ -36,22 +36,6 @@
           {{ partial "svg" (dict "icon" "sun") }}
           {{ partial "svg" (dict "icon" "moon") }}
         </button>
-        <div class="dropdown" id="docs-mode" role="region" aria-label='{{ i18n "change_theme" }}'>
-          <div class="list theme-handle">
-            <button class="list-link has-icon" data-theme="system" type="button" aria-pressed="false">
-              {{ partial "svg" (dict "icon" "laptop") }}
-              {{ i18n "auto" }}
-            </button>
-            <button class="list-link has-icon" data-theme="light" type="button" aria-pressed="false">
-              {{ partial "svg" (dict "icon" "sun") }}
-              {{ i18n "light" }}
-            </button>
-            <button class="list-link has-icon" data-theme="dark" type="button" aria-pressed="false">
-              {{ partial "svg" (dict "icon" "moon") }}
-              {{ i18n "dark" }}
-            </button>
-          </div>
-        </div>
       </div>
 
       {{- if hugo.IsMultilingual -}}
@@ -90,6 +74,22 @@
           </div>
         </div>
       {{- end -}}
+    </div>
+    <div class="dropdown" id="docs-mode" role="region" aria-label='{{ i18n "change_theme" }}'>
+      <div class="list theme-handle">
+        <button class="list-link has-icon" data-theme="system" type="button" aria-pressed="false">
+          {{ partial "svg" (dict "icon" "laptop") }}
+          {{ i18n "auto" }}
+        </button>
+        <button class="list-link has-icon" data-theme="light" type="button" aria-pressed="false">
+          {{ partial "svg" (dict "icon" "sun") }}
+          {{ i18n "light" }}
+        </button>
+        <button class="list-link has-icon" data-theme="dark" type="button" aria-pressed="false">
+          {{ partial "svg" (dict "icon" "moon") }}
+          {{ i18n "dark" }}
+        </button>
+      </div>
     </div>
   </div>
 </div>
